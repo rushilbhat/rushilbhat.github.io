@@ -16,12 +16,16 @@
       font-weight: 400;
     }
 
-    table td:first-child,
-    table th:first-child,
-    table td:last-child,
-    table th:last-child {
-        width: 50px;
+    .table-wrapper {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
     }
 
+    mjx-container {
+        overflow-x: auto;
+        overflow-y: hidden;
+        max-width: 100%;
+    }
 }
   
