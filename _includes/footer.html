@@ -9,8 +9,13 @@
             {%- if site.email -%}
             <li><a class="u-email" href="mailto:{{ site.email }}">Email</a></li>    
             {%- endif -%}
-            <li><a href="https://github.com/yourusername">GitHub</a></li>
-            <li><a href="https://x.com/yourusername">X</a></li>
+            {%- if site.github_username -%}
+            <li><a class="u-github" href="https://github.com/{{ site.github_username }}">GitHub</a></li>
+            {%- endif -%}
+            {%- if site.twitter_username -%}
+            <li><a class="u-twitter" href="https://x.com/{{ site.twitter_username }}">X</a></li>
+            {%- endif -%}
+  
           </ul>
         </div>
       </div>
