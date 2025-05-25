@@ -839,7 +839,7 @@ const ModelSplitAnimation = () => {
   return (
     <div
       ref={containerRef}
-      className="w-full h-auto flex items-center justify-center p-4" //border-2 border-red-500 overflow-hidden
+      className="w-full h-auto flex items-center justify-center p-4"
       style={{
         backgroundColor: '#fdfdfd',
         position: 'relative'
@@ -943,9 +943,9 @@ const ModelSplitAnimation = () => {
                             className="absolute border-2 border-solid border-black rounded-xl bg-white
                               transition-all duration-1000"
                             style={{
-                              height: '25%',
+                              height: '40px',
                               width: shrinkPerstepGrads ? '50%' : '100%',
-                              top: '-25%',
+                              top: '-40px',
                               left: 0,
                               opacity:
                                 gpuIndex === 1 && hideGpu1Perstep1
@@ -994,10 +994,10 @@ const ModelSplitAnimation = () => {
                             className="absolute border-2 border-solid border-black rounded-xl bg-white
                               transition-all duration-1000"
                             style={{
-                              height: '25%',
+                              height: '40px',
                               width: shrinkPerstepGrads ? '50%' : '100%',
-                              top: '-25%',
-                              right: 0,
+                              top: '-40px',
+                              left: shrinkPerstepGrads ? '50%' : 0,
                               opacity:
                                 gpuIndex === 0 && hideGpu0Perstep2
                                   ? 0
@@ -1052,9 +1052,9 @@ const ModelSplitAnimation = () => {
                             className="absolute border-2 border-solid border-black rounded-xl bg-white
                               transition-all duration-1000"
                             style={{
-                              height: '25%',
+                              height: '40px',
                               width: shrinkPerstepGradsU1 ? '50%' : '100%',
-                              top: '-25%',
+                              top: '-40px',
                               left: 0,
                               opacity:
                                 gpuIndex === 1 && hideGpu1Perstep1U1
@@ -1103,10 +1103,10 @@ const ModelSplitAnimation = () => {
                             className="absolute border-2 border-solid border-black rounded-xl bg-white
                               transition-all duration-1000"
                             style={{
-                              height: '25%',
+                              height: '40px',
                               width: shrinkPerstepGradsU1 ? '50%' : '100%',
-                              top: '-25%',
-                              right: 0,
+                              top: '-40px',
+                              left: shrinkPerstepGradsU1 ? '50%' : 0,
                               opacity:
                                 gpuIndex === 0 && hideGpu0Perstep2U1
                                   ? 0
@@ -1161,9 +1161,9 @@ const ModelSplitAnimation = () => {
                             className="absolute border-2 border-solid border-black rounded-xl bg-white
                               transition-all duration-1000"
                             style={{
-                              height: '25%',
+                              height: '40px',
                               width: shrinkPerstepGradsU0 ? '50%' : '100%',
-                              top: '-25%',
+                              top: '-40px',
                               left: 0,
                               opacity:
                                 gpuIndex === 1 && hideGpu1Perstep1U0
@@ -1212,10 +1212,10 @@ const ModelSplitAnimation = () => {
                             className="absolute border-2 border-solid border-black rounded-xl bg-white
                               transition-all duration-1000"
                             style={{
-                              height: '25%',
+                              height: '40px',
                               width: shrinkPerstepGradsU0 ? '50%' : '100%',
-                              top: '-25%',
-                              right: 0,
+                              top: '-40px',
+                              left: shrinkPerstepGradsU0 ? '50%' : 0,
                               opacity:
                                 gpuIndex === 0 && hideGpu0Perstep2U0
                                   ? 0
@@ -1274,8 +1274,8 @@ const ModelSplitAnimation = () => {
                         className="absolute border-2 border-solid border-black rounded-xl bg-white
                           transition-all duration-500"
                         style={{
-                          top: '25%',
-                          height: 'calc(75%)',
+                          top: '40px',
+                          height: '120px',
                           width: '76px',
                           // Hide activation for Unit2, Unit1, or Unit0 if necessary
                           opacity:
@@ -1303,8 +1303,9 @@ const ModelSplitAnimation = () => {
                         className={`absolute top-0 w-full border-2 border-dashed border-black rounded-xl
                           transition-all duration-[790ms]`}
                         style={{
-                          height: showInternalStructure ? '25%' : '100%',
-                          opacity: showInternalStructure ? 1 : 1
+                          height: showInternalStructure ? '40px' : '160px',
+                          opacity: showInternalStructure ? 1 : 1,
+                          willChange: 'height'
                         }}
                       >
                         {/* FIRST chevron set (Unit0) => Right-facing */}
@@ -1364,7 +1365,7 @@ const ModelSplitAnimation = () => {
                             className="absolute border-2 border-solid border-black rounded-xl bg-white
                               transition-all duration-1000"
                             style={{
-                              height: 'calc(25%)',
+                              height: '40px',
                               width:
                                 (
                                   (expandParamsBox[unitIndex] && !shrinkParamsBox[unitIndex]) ||
@@ -1373,11 +1374,12 @@ const ModelSplitAnimation = () => {
                                   (unitIndex === 0 && expandUnit0ParamsFinal && !shrinkExpandedParamsU0)
                                 )
                                   ? '151px'
-                                  : '100%',
+                                  : '76px',
                               left: gpuIndex === 1 ? 'auto' : '0',
                               right: gpuIndex === 1 ? '0' : 'auto',
-                              transform: `translateY(${showInternalStructure ? '0' : '50%'})`,
-                              opacity: showInternalStructure ? '1' : '0'
+                              transform: showInternalStructure ? 'translateY(0)' : 'translateY(80px)',
+                              opacity: showInternalStructure ? '1' : '0',
+                              willChange: 'transform'
                             }}
                           >
                             <span className="text-xs absolute top-1/2 left-1/2
@@ -1392,11 +1394,9 @@ const ModelSplitAnimation = () => {
                             className="absolute w-full border-2 border-solid border-black rounded-xl bg-white
                               transition-all duration-500"
                             style={{
-                              top: '50%',
-                              height: showInternalStructure ? 'calc(25%)' : '100%',
-                              transform: `translate(0, ${
-                                showInternalStructure ? '-100%' : '-50%'
-                              })`,
+                              top: '40px',
+                              height: showInternalStructure ? '40px' : '160px',
+                              transform: showInternalStructure ? 'translateY(0)' : 'translateY(-40px)',
                               // Raise zIndex if final translation is happening for that unit or if showInternalStructure is true
                               zIndex: (
                                 (finalTranslatePerstep && unitIndex === 2) ||
@@ -1421,7 +1421,8 @@ const ModelSplitAnimation = () => {
                                   ? 'rgba(255, 200, 200, 1)'
                                 : (finalTranslatePerstepU0 && unitIndex === 0 && gpuIndex === 1 && showTemporaryGlowUnit0GradsGpu1)
                                   ? 'rgba(255, 200, 200, 1)'
-                                : 'white'
+                                : 'white',
+                              willChange: 'transform, height'
                             }}
                           >
                             <span className="text-xs absolute top-1/2 left-1/2
@@ -1438,10 +1439,12 @@ const ModelSplitAnimation = () => {
                             className="absolute w-full border-2 border-solid border-black rounded-xl bg-white
                               transition-all duration-500"
                             style={{
-                              height: '50%',
-                              transform: `translateY(${showInternalStructure ? '100%' : '50%'})`,
+                              top: '80px',
+                              height: '80px',
+                              transform: showInternalStructure ? 'translateY(0)' : 'translateY(-40px)',
                               opacity: showInternalStructure ? '1' : '0',
-                              zIndex: 1
+                              zIndex: 1,
+                              willChange: 'transform'
                             }}
                           >
                             <span className="text-xs absolute top-1/2 left-1/2
